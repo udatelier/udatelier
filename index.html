@@ -589,12 +589,13 @@
     </div>
   </div>
   <div class="nav-links">
-    <a onclick="showPage('work')">Work</a>
+    <a onclick="showPage('work')" data-i18n="nav-work">Work</a>
     <a href="jaime_sevilla_portfolio.html" data-i18n="nav-portfolio">Trayectoria</a>
-    <a onclick="showPage('services')">Services</a>
-    <a onclick="showPage('essays')">Essays</a>
-    <a onclick="showPage('about')">About</a>
-    <a onclick="showPage('contact')">Contact</a>
+    <a onclick="showPage('services')" data-i18n="nav-services">Services</a>
+    <a onclick="showPage('desperfecto')">El Desperfecto</a>
+    <a onclick="showPage('essays')" data-i18n="nav-essays">Essays</a>
+    <a onclick="showPage('about')" data-i18n="nav-about">About</a>
+    <a onclick="showPage('contact')" data-i18n="nav-contact">Contact</a>
   </div>
   <div style="display:flex; align-items:center; gap:0.75rem;">
     <button class="lang-btn" onclick="toggleLang()" id="lang-btn">ES / EN</button>
@@ -819,6 +820,36 @@
 
 
 <!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: EL DESPERFECTO
+════════════════════════════════════════════════════════════════ -->
+<div id="page-desperfecto" class="page">
+  <div class="hero" style="padding-bottom: 2rem">
+    <p class="hero-tag">El Desperfecto</p>
+    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)" data-i18n-html="desp-hero-title">
+      Notas sobre proceso,<br><em>materia y oficio.</em>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-desc" data-i18n="desp-hero-desc">
+      Reflexiones del atelier sobre arquitectura, diseño y construcción. Fragmentos, referencias y preguntas sin respuesta.
+    </p>
+  </div>
+  <div class="section" style="padding-top: 2rem">
+    <!-- AGREGAR ENTRADAS AQUÍ -->
+    <!-- Copia este bloque para cada entrada:
+
+    <a class="essay-row" href="#">
+      <span class="essay-date">2025</span>
+      <span class="essay-title">Título de la entrada</span>
+      <span class="essay-tag">Tema</span>
+    </a>
+
+    -->
+    <p style="font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.08em;" data-i18n="desp-empty">Próximamente — Soon</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
      PÁGINA: ESSAYS
 ════════════════════════════════════════════════════════════════ -->
 <div id="page-essays" class="page">
@@ -993,7 +1024,15 @@
   const t = {
     es: {
       'nav-sub': 'Un Desperfecto Atelier',
+      'nav-work': 'Work',
       'nav-portfolio': 'Trayectoria',
+      'nav-services': 'Servicios',
+      'nav-essays': 'Ensayos',
+      'nav-about': 'Acerca',
+      'nav-contact': 'Contacto',
+      'desp-hero-title': 'Notas sobre proceso,<br><em>materia y oficio.</em>',
+      'desp-hero-desc': 'Reflexiones del atelier sobre arquitectura, diseño y construcción. Fragmentos, referencias y preguntas sin respuesta.',
+      'desp-empty': 'Próximamente',
       'portfolio-tag': 'Proyectos anteriores · UD_A',
       'portfolio-title': 'Trabajo<br><em>anterior.</em>',
       'portfolio-desc': 'Una selección de proyectos de etapas anteriores del atelier.',
@@ -1036,7 +1075,15 @@
     },
     en: {
       'nav-sub': 'An Imperfection Atelier',
+      'nav-work': 'Work',
       'nav-portfolio': 'Trajectory',
+      'nav-services': 'Services',
+      'nav-essays': 'Essays',
+      'nav-about': 'About',
+      'nav-contact': 'Contact',
+      'desp-hero-title': 'Notes on process,<br><em>matter and craft.</em>',
+      'desp-hero-desc': 'Reflections from the atelier on architecture, design and construction. Fragments, references and unanswered questions.',
+      'desp-empty': 'Coming soon',
       'portfolio-tag': 'Previous projects · UD_A',
       'portfolio-title': 'Previous<br><em>work.</em>',
       'portfolio-desc': 'A selection of projects from earlier stages of the atelier.',
