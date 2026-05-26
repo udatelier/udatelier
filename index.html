@@ -459,6 +459,41 @@
     .page { display: none; }
     .page.active { display: block; }
 
+    /* ── LIGHTBOX ───────────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      cursor: default;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.75rem;
+      font-family: var(--mono);
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.6;
+      line-height: 1;
+      transition: opacity 0.2s;
+      user-select: none;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .work-img:has(img) { cursor: zoom-in; }
+
     /* ── FORMSPREE ──────────────────────────────────────────── */
     .fs-success {
       display: none;
@@ -877,6 +912,12 @@
 </div>
 
 
+<!-- ── LIGHTBOX ────────────────────────────────────────────────── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 <!-- ── FOOTER ──────────────────────────────────────────────────── -->
 <footer>
   <span class="footer-copy">© 2025 UD_A — udatelier.com</span>
@@ -1015,6 +1056,23 @@
     document.getElementById('lang-btn').textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
     applyLang(lang);
   }
+
+  /* ── LIGHTBOX ──────────────────────────────────────────────── */
+  function openLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt || '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  document.querySelectorAll('.work-img').forEach(div => {
+    const img = div.querySelector('img');
+    if (img) div.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
 
   /* ── FORMSPREE ─────────────────────────────────────────────── */
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
