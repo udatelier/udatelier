@@ -482,10 +482,46 @@
       cursor: not-allowed;
     }
 
+    /* ── MENÚ HAMBURGUESA ───────────────────────────────────── */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--ink);
+      padding: 2px 4px;
+      line-height: 1;
+    }
+
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 1.25rem 1.5rem; }
-      .nav-links { display: none; }
+      .menu-btn { display: block; }
+
+      /* Menú oculto por defecto en móvil */
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 0.5px solid var(--line);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 0;
+        z-index: 99;
+      }
+      .nav-links a {
+        padding: 0.75rem 0;
+        border-bottom: 0.5px solid var(--line);
+        font-size: 12px;
+      }
+      .nav-links a:last-child { border-bottom: none; }
+      /* Menú abierto */
+      .nav-links.open { display: flex; }
+
       .hero { padding: 4rem 1.5rem 3rem; }
       .section { padding: 3rem 1.5rem; }
       .about-split,
@@ -504,8 +540,7 @@
 <nav>
   <div>
     <div class="nav-logo">UD_A</div>
-    <!-- EDITAR: cambia el subtítulo si quieres -->
-    <div class="nav-sub">Un Desperfecto Atelier</div>
+    <div class="nav-sub" data-i18n="nav-sub">Un Desperfecto Atelier</div>
   </div>
   <div class="nav-links">
     <a onclick="showPage('work')">Work</a>
@@ -514,7 +549,10 @@
     <a onclick="showPage('about')">About</a>
     <a onclick="showPage('contact')">Contact</a>
   </div>
-  <button class="lang-btn" onclick="toggleLang()" id="lang-btn">ES / EN</button>
+  <div style="display:flex; align-items:center; gap:0.75rem;">
+    <button class="lang-btn" onclick="toggleLang()" id="lang-btn">ES / EN</button>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menú">☰</button>
+  </div>
 </nav>
 
 
@@ -524,31 +562,29 @@
 <div id="page-work" class="page active">
 
   <div class="hero">
-    <!-- EDITAR: tagline del hero -->
-    <p class="hero-tag" id="h-tag">Arquitectura — Diseño — Construcción · La Paz, BCS</p>
-    <h1 class="hero-title" id="h-title">
+    <p class="hero-tag" data-i18n="h-tag">Arquitectura — Diseño — Construcción · La Paz, BCS</p>
+    <h1 class="hero-title" data-i18n-html="h-title">
       Diseñamos con<br><em>imperfección.</em><br>Construimos con<br>intención.
     </h1>
     <div class="hero-rule"></div>
-    <!-- EDITAR: descripción corta -->
-    <p class="hero-desc" id="h-desc">
+    <p class="hero-desc" data-i18n="h-desc">
       Un atelier design–build donde la idea se confronta con la materia,
       la construcción y el contexto. Forma, estructura y material
       respondiendo a condiciones reales.
     </p>
-    <a class="hero-cta" id="h-cta" onclick="showPage('work')">
+    <a class="hero-cta" onclick="showPage('work')" data-i18n="h-cta">
       Ver trabajo →
     </a>
   </div>
 
   <div class="section" style="padding-top: 3.5rem">
-    <div class="section-label">Proyectos seleccionados</div>
+    <div class="section-label" data-i18n="work-label">Proyectos seleccionados</div>
 
     <div class="tab-bar">
-      <button class="tab active" onclick="filterWork('all', this)">Todos</button>
-      <button class="tab" onclick="filterWork('arquitectura', this)">Arquitectura</button>
-      <button class="tab" onclick="filterWork('interiores', this)">Interiores</button>
-      <button class="tab" onclick="filterWork('mobiliario', this)">Mobiliario</button>
+      <button class="tab active" onclick="filterWork('all', this)" data-i18n="tab-all">Todos</button>
+      <button class="tab" onclick="filterWork('arquitectura', this)" data-i18n="tab-arch">Arquitectura</button>
+      <button class="tab" onclick="filterWork('interiores', this)" data-i18n="tab-int">Interiores</button>
+      <button class="tab" onclick="filterWork('mobiliario', this)" data-i18n="tab-mob">Mobiliario</button>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -568,7 +604,7 @@
         <div class="work-meta">
           <span class="work-year">2024</span>
           <div class="work-title">Casa Conchal</div>
-          <div class="work-type">Arquitectura · Vivienda</div>
+          <div class="work-type" data-i18n="wt-arch-housing">Arquitectura · Vivienda</div>
         </div>
       </div>
 
@@ -579,7 +615,7 @@
         <div class="work-meta">
           <span class="work-year">2024</span>
           <div class="work-title">Taller Centenario</div>
-          <div class="work-type">Interiores · Comercio</div>
+          <div class="work-type" data-i18n="wt-int-retail">Interiores · Comercio</div>
         </div>
       </div>
 
@@ -590,7 +626,7 @@
         <div class="work-meta">
           <span class="work-year">2023</span>
           <div class="work-title">Mesa de trabajo UD_A 01</div>
-          <div class="work-type">Mobiliario · Edición</div>
+          <div class="work-type" data-i18n="wt-furn-edition">Mobiliario · Edición</div>
         </div>
       </div>
 
@@ -601,7 +637,7 @@
         <div class="work-meta">
           <span class="work-year">2023</span>
           <div class="work-title">Palapa Los Planes</div>
-          <div class="work-type">Arquitectura · Hospitalidad</div>
+          <div class="work-type" data-i18n="wt-arch-hospitality">Arquitectura · Hospitalidad</div>
         </div>
       </div>
 
@@ -612,7 +648,7 @@
         <div class="work-meta">
           <span class="work-year">2023</span>
           <div class="work-title">Residencia El Sargento</div>
-          <div class="work-type">Interiores · Vivienda</div>
+          <div class="work-type" data-i18n="wt-int-housing">Interiores · Vivienda</div>
         </div>
       </div>
 
@@ -623,7 +659,7 @@
         <div class="work-meta">
           <span class="work-year">2022</span>
           <div class="work-title">Banco / estante modular</div>
-          <div class="work-type">Mobiliario · Sistema</div>
+          <div class="work-type" data-i18n="wt-furn-system">Mobiliario · Sistema</div>
         </div>
       </div>
 
@@ -640,18 +676,17 @@
 <div id="page-services" class="page">
   <div class="hero" style="padding-bottom: 2rem">
     <p class="hero-tag">Services</p>
-    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)">
+    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)" data-i18n-html="svc-hero-title">
       Una práctica integrada<br>de diseño y construcción.
     </h1>
   </div>
   <div class="section" style="padding-top: 2rem">
 
-    <!-- EDITAR: modifica nombre y descripción de cada servicio -->
     <div class="service-row">
       <span class="service-num">01</span>
       <div>
-        <div class="service-name">Arquitectura</div>
-        <div class="service-desc">Proyectos de nueva planta, ampliaciones y rehabilitaciones. Proceso completo desde concepto hasta obra terminada.</div>
+        <div class="service-name" data-i18n="svc-01-name">Arquitectura</div>
+        <div class="service-desc" data-i18n="svc-01-desc">Proyectos de nueva planta, ampliaciones y rehabilitaciones. Proceso completo desde concepto hasta obra terminada.</div>
       </div>
       <div class="service-arrow">→</div>
     </div>
@@ -659,8 +694,8 @@
     <div class="service-row">
       <span class="service-num">02</span>
       <div>
-        <div class="service-name">Diseño de interiores</div>
-        <div class="service-desc">Espacios de hospitalidad, vivienda y comercio. Materialidad, mobiliario y detalle como lenguaje.</div>
+        <div class="service-name" data-i18n="svc-02-name">Diseño de interiores</div>
+        <div class="service-desc" data-i18n="svc-02-desc">Espacios de hospitalidad, vivienda y comercio. Materialidad, mobiliario y detalle como lenguaje.</div>
       </div>
       <div class="service-arrow">→</div>
     </div>
@@ -668,8 +703,8 @@
     <div class="service-row">
       <span class="service-num">03</span>
       <div>
-        <div class="service-name">Mobiliario a medida</div>
-        <div class="service-desc">Piezas diseñadas y construidas para el espacio. Colaboración directa con artesanos y fabricantes locales.</div>
+        <div class="service-name" data-i18n="svc-03-name">Mobiliario a medida</div>
+        <div class="service-desc" data-i18n="svc-03-desc">Piezas diseñadas y construidas para el espacio. Colaboración directa con artesanos y fabricantes locales.</div>
       </div>
       <div class="service-arrow">→</div>
     </div>
@@ -677,8 +712,8 @@
     <div class="service-row">
       <span class="service-num">04</span>
       <div>
-        <div class="service-name">Consultoría design-build</div>
-        <div class="service-desc">Planeación, desarrollo y gestión de proyectos. Integración entre diseño, presupuesto y ejecución.</div>
+        <div class="service-name" data-i18n="svc-04-name">Consultoría design-build</div>
+        <div class="service-desc" data-i18n="svc-04-desc">Planeación, desarrollo y gestión de proyectos. Integración entre diseño, presupuesto y ejecución.</div>
       </div>
       <div class="service-arrow">→</div>
     </div>
@@ -686,8 +721,8 @@
     <div class="service-row">
       <span class="service-num">05</span>
       <div>
-        <div class="service-name">Documentación técnica</div>
-        <div class="service-desc">Levantamientos, planos de construcción y especificaciones. Precisión como condición del proceso.</div>
+        <div class="service-name" data-i18n="svc-05-name">Documentación técnica</div>
+        <div class="service-desc" data-i18n="svc-05-desc">Levantamientos, planos de construcción y especificaciones. Precisión como condición del proceso.</div>
       </div>
       <div class="service-arrow">→</div>
     </div>
@@ -702,42 +737,40 @@
 <div id="page-essays" class="page">
   <div class="hero" style="padding-bottom: 2rem">
     <p class="hero-tag">Essays</p>
-    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)">
+    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)" data-i18n="essays-title">
       Pensamiento en proceso.
     </h1>
   </div>
   <div class="section" style="padding-top: 2rem">
 
-    <!-- EDITAR: cambia fecha, título y categoría de cada ensayo -->
-    <!-- Para enlazar a un PDF o página: cambia href="#" por la URL real -->
     <a class="essay-row" href="#">
       <span class="essay-date">2025</span>
-      <span class="essay-title">La imperfección como método</span>
-      <span class="essay-tag">Praxis</span>
+      <span class="essay-title" data-i18n="essay-1">La imperfección como método</span>
+      <span class="essay-tag" data-i18n="etag-1">Praxis</span>
     </a>
 
     <a class="essay-row" href="#">
       <span class="essay-date">2025</span>
-      <span class="essay-title">Construir en el desierto: materialidad y clima</span>
-      <span class="essay-tag">Paisaje</span>
+      <span class="essay-title" data-i18n="essay-2">Construir en el desierto: materialidad y clima</span>
+      <span class="essay-tag" data-i18n="etag-2">Paisaje</span>
     </a>
 
     <a class="essay-row" href="#">
       <span class="essay-date">2024</span>
-      <span class="essay-title">El artesano y el arquitecto — una colaboración necesaria</span>
-      <span class="essay-tag">Oficio</span>
+      <span class="essay-title" data-i18n="essay-3">El artesano y el arquitecto — una colaboración necesaria</span>
+      <span class="essay-tag" data-i18n="etag-3">Oficio</span>
     </a>
 
     <a class="essay-row" href="#">
       <span class="essay-date">2024</span>
-      <span class="essay-title">Hospitalidad y escala humana en Baja California</span>
-      <span class="essay-tag">Territorio</span>
+      <span class="essay-title" data-i18n="essay-4">Hospitalidad y escala humana en Baja California</span>
+      <span class="essay-tag" data-i18n="etag-4">Territorio</span>
     </a>
 
     <a class="essay-row" href="#">
       <span class="essay-date">2024</span>
-      <span class="essay-title">Design-build: cuando diseñar y construir son lo mismo</span>
-      <span class="essay-tag">Proceso</span>
+      <span class="essay-title" data-i18n="essay-5">Design-build: cuando diseñar y construir son lo mismo</span>
+      <span class="essay-tag" data-i18n="etag-5">Proceso</span>
     </a>
 
   </div>
@@ -749,7 +782,7 @@
 ════════════════════════════════════════════════════════════════ -->
 <div id="page-about" class="page">
   <div class="section">
-    <div class="section-label">Sobre UD_A</div>
+    <div class="section-label" data-i18n="about-label">Sobre UD_A</div>
     <div class="about-split">
 
       <div class="about-img">
@@ -757,18 +790,16 @@
       </div>
 
       <div class="about-text">
-        <!-- EDITAR: heading y párrafos -->
-        <h2 class="about-heading">
+        <h2 class="about-heading" data-i18n-html="about-heading">
           Praxis: donde la idea<br>se confronta con la materia.
         </h2>
-        <p>UD_A es un atelier de arquitectura, diseño y construcción con enfoque design–build. Desarrollamos proyectos desde la visión conceptual hasta la materialización, integrando diseño, documentación técnica y ejecución como un proceso continuo.</p>
-        <p>Trabajamos en arquitectura, interiores, mobiliario y sistemas a medida. Colaboramos con artesanos, fabricantes y especialistas para traducir decisiones de diseño en soluciones constructivas viables.</p>
-        <p>Nuestra práctica se enfoca en proyectos de hospitalidad, vivienda y espacios comerciales donde la arquitectura construye experiencias vinculadas a la materialidad, el uso cotidiano y al paisaje.</p>
+        <p data-i18n="about-p1">UD_A es un atelier de arquitectura, diseño y construcción con enfoque design–build. Desarrollamos proyectos desde la visión conceptual hasta la materialización, integrando diseño, documentación técnica y ejecución como un proceso continuo.</p>
+        <p data-i18n="about-p2">Trabajamos en arquitectura, interiores, mobiliario y sistemas a medida. Colaboramos con artesanos, fabricantes y especialistas para traducir decisiones de diseño en soluciones constructivas viables.</p>
+        <p data-i18n="about-p3">Nuestra práctica se enfoca en proyectos de hospitalidad, vivienda y espacios comerciales donde la arquitectura construye experiencias vinculadas a la materialidad, el uso cotidiano y al paisaje.</p>
 
         <div class="about-detail">
-          <!-- EDITAR: cambia los números y etiquetas -->
-          <div class="about-stat"><span>9+</span><small>Proyectos</small></div>
-          <div class="about-stat"><span>3</span><small>Escalas</small></div>
+          <div class="about-stat"><span>9+</span><small data-i18n="stat-projects">Proyectos</small></div>
+          <div class="about-stat"><span>3</span><small data-i18n="stat-scales">Escalas</small></div>
           <div class="about-stat"><span>BCS</span><small>Base</small></div>
         </div>
       </div>
@@ -776,10 +807,9 @@
   </div>
 
   <div class="section">
-    <div class="section-label">Manifiesto</div>
+    <div class="section-label" data-i18n="manifesto-label">Manifiesto</div>
     <div class="manifesto-block">
-      <!-- EDITAR: texto del manifiesto -->
-      <p class="manifesto-text">
+      <p class="manifesto-text" data-i18n-html="manifesto-text">
         Diseñamos con imperfección.
         <span class="muted">Construimos con intención.</span>
         Revelamos la mano, la huella, la cicatriz.
@@ -802,46 +832,45 @@
     <div class="contact-split">
       <div>
         <!-- EDITAR: heading de contacto -->
-        <h2 class="contact-heading">Hablemos<br>de tu proyecto.</h2>
+        <h2 class="contact-heading" data-i18n-html="contact-heading">Hablemos<br>de tu proyecto.</h2>
         <div class="contact-detail">
           La Paz, Baja California Sur<br>
           México<br><br>
-          <!-- EDITAR: correo y redes -->
           <a href="mailto:el_desperfecto@udatelier.com">el_desperfecto@udatelier.com</a><br><br>
           <a href="https://www.instagram.com/ud_atelier" target="_blank">@ud_atelier</a><br>
-          <a href="#">LinkedIn</a><!-- EDITAR: agrega tu URL de LinkedIn -->
+          <a href="#">LinkedIn</a>
         </div>
       </div>
 
-      <div data-fs-success class="fs-success">
+      <div data-fs-success class="fs-success" data-i18n="fs-success-msg">
         ✓ Mensaje recibido. Pronto nos ponemos en contacto.
       </div>
 
       <form class="contact-form" id="contact-form">
         <div class="form-field">
-          <label>Nombre</label>
-          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <label data-i18n="lbl-nombre">Nombre</label>
+          <input type="text" name="nombre" placeholder="Tu nombre" required data-i18n-ph="ph-nombre">
         </div>
         <div class="form-field">
-          <label>Email</label>
+          <label data-i18n="lbl-email">Email</label>
           <input type="email" name="email" placeholder="tu@correo.com" required data-fs-field>
           <span data-fs-error="email" class="fs-field-error"></span>
         </div>
         <div class="form-field">
-          <label>Tipo de proyecto</label>
+          <label data-i18n="lbl-tipo">Tipo de proyecto</label>
           <select name="tipo">
-            <option>Arquitectura</option>
-            <option>Interiores</option>
-            <option>Mobiliario</option>
-            <option>Consultoría</option>
+            <option data-i18n="opt-arch">Arquitectura</option>
+            <option data-i18n="opt-int">Interiores</option>
+            <option data-i18n="opt-mob">Mobiliario</option>
+            <option data-i18n="opt-cons">Consultoría</option>
           </select>
         </div>
         <div class="form-field">
-          <label>Mensaje</label>
-          <textarea name="mensaje" placeholder="Cuéntame sobre tu proyecto..."></textarea>
+          <label data-i18n="lbl-mensaje">Mensaje</label>
+          <textarea name="mensaje" placeholder="Cuéntame sobre tu proyecto..." data-i18n-ph="ph-mensaje"></textarea>
         </div>
         <div data-fs-error class="fs-form-error"></div>
-        <button type="submit" class="form-submit" data-fs-submit-btn>Enviar</button>
+        <button type="submit" class="form-submit" data-fs-submit-btn data-i18n="btn-enviar">Enviar</button>
       </form>
     </div>
   </div>
@@ -864,37 +893,130 @@
      la lógica de navegación o el filtro de proyectos.
 ════════════════════════════════════════════════════════════════ -->
 <script>
-  /* Navegación entre páginas */
+  /* ── TRADUCCIONES ──────────────────────────────────────────── */
+  const t = {
+    es: {
+      'nav-sub': 'Un Desperfecto Atelier',
+      'h-tag': 'Arquitectura — Diseño — Construcción · La Paz, BCS',
+      'h-title': 'Diseñamos con<br><em>imperfección.</em><br>Construimos con<br>intención.',
+      'h-desc': 'Un atelier design–build donde la idea se confronta con la materia, la construcción y el contexto. Forma, estructura y material respondiendo a condiciones reales.',
+      'h-cta': 'Ver trabajo →',
+      'work-label': 'Proyectos seleccionados',
+      'tab-all': 'Todos', 'tab-arch': 'Arquitectura', 'tab-int': 'Interiores', 'tab-mob': 'Mobiliario',
+      'wt-arch-housing': 'Arquitectura · Vivienda', 'wt-int-retail': 'Interiores · Comercio',
+      'wt-furn-edition': 'Mobiliario · Edición', 'wt-arch-hospitality': 'Arquitectura · Hospitalidad',
+      'wt-int-housing': 'Interiores · Vivienda', 'wt-furn-system': 'Mobiliario · Sistema',
+      'svc-hero-title': 'Una práctica integrada<br>de diseño y construcción.',
+      'svc-01-name': 'Arquitectura', 'svc-01-desc': 'Proyectos de nueva planta, ampliaciones y rehabilitaciones. Proceso completo desde concepto hasta obra terminada.',
+      'svc-02-name': 'Diseño de interiores', 'svc-02-desc': 'Espacios de hospitalidad, vivienda y comercio. Materialidad, mobiliario y detalle como lenguaje.',
+      'svc-03-name': 'Mobiliario a medida', 'svc-03-desc': 'Piezas diseñadas y construidas para el espacio. Colaboración directa con artesanos y fabricantes locales.',
+      'svc-04-name': 'Consultoría design-build', 'svc-04-desc': 'Planeación, desarrollo y gestión de proyectos. Integración entre diseño, presupuesto y ejecución.',
+      'svc-05-name': 'Documentación técnica', 'svc-05-desc': 'Levantamientos, planos de construcción y especificaciones. Precisión como condición del proceso.',
+      'essays-title': 'Pensamiento en proceso.',
+      'essay-1': 'La imperfección como método', 'etag-1': 'Praxis',
+      'essay-2': 'Construir en el desierto: materialidad y clima', 'etag-2': 'Paisaje',
+      'essay-3': 'El artesano y el arquitecto — una colaboración necesaria', 'etag-3': 'Oficio',
+      'essay-4': 'Hospitalidad y escala humana en Baja California', 'etag-4': 'Territorio',
+      'essay-5': 'Design-build: cuando diseñar y construir son lo mismo', 'etag-5': 'Proceso',
+      'about-label': 'Sobre UD_A',
+      'about-heading': 'Praxis: donde la idea<br>se confronta con la materia.',
+      'about-p1': 'UD_A es un atelier de arquitectura, diseño y construcción con enfoque design–build. Desarrollamos proyectos desde la visión conceptual hasta la materialización, integrando diseño, documentación técnica y ejecución como un proceso continuo.',
+      'about-p2': 'Trabajamos en arquitectura, interiores, mobiliario y sistemas a medida. Colaboramos con artesanos, fabricantes y especialistas para traducir decisiones de diseño en soluciones constructivas viables.',
+      'about-p3': 'Nuestra práctica se enfoca en proyectos de hospitalidad, vivienda y espacios comerciales donde la arquitectura construye experiencias vinculadas a la materialidad, el uso cotidiano y al paisaje.',
+      'stat-projects': 'Proyectos', 'stat-scales': 'Escalas',
+      'manifesto-label': 'Manifiesto',
+      'manifesto-text': 'Diseñamos con imperfección. <span class="muted">Construimos con intención.</span> Revelamos la mano, la huella, la cicatriz. Entre lo primitivo y lo moderno, <span class="muted">la precisión y el error,</span> construimos espacios que despiertan los sentidos y cuestionan cómo habitamos. <span class="muted">Lo imperfecto es humano. Lo humano es esencial.</span>',
+      'contact-heading': 'Hablemos<br>de tu proyecto.',
+      'lbl-nombre': 'Nombre', 'lbl-email': 'Email', 'lbl-tipo': 'Tipo de proyecto', 'lbl-mensaje': 'Mensaje',
+      'ph-nombre': 'Tu nombre', 'ph-mensaje': 'Cuéntame sobre tu proyecto...',
+      'opt-arch': 'Arquitectura', 'opt-int': 'Interiores', 'opt-mob': 'Mobiliario', 'opt-cons': 'Consultoría',
+      'btn-enviar': 'Enviar',
+      'fs-success-msg': '✓ Mensaje recibido. Pronto nos ponemos en contacto.',
+    },
+    en: {
+      'nav-sub': 'An Imperfection Atelier',
+      'h-tag': 'Architecture — Design — Construction · La Paz, BCS',
+      'h-title': 'We design with<br><em>imperfection.</em><br>We build with<br>intention.',
+      'h-desc': 'A design–build atelier where the idea confronts matter, construction and context. Form, structure and material responding to real conditions.',
+      'h-cta': 'View work →',
+      'work-label': 'Selected projects',
+      'tab-all': 'All', 'tab-arch': 'Architecture', 'tab-int': 'Interiors', 'tab-mob': 'Furniture',
+      'wt-arch-housing': 'Architecture · Housing', 'wt-int-retail': 'Interiors · Retail',
+      'wt-furn-edition': 'Furniture · Edition', 'wt-arch-hospitality': 'Architecture · Hospitality',
+      'wt-int-housing': 'Interiors · Housing', 'wt-furn-system': 'Furniture · System',
+      'svc-hero-title': 'An integrated<br>design and construction practice.',
+      'svc-01-name': 'Architecture', 'svc-01-desc': 'New construction, extensions and renovations. Full process from concept to completed work.',
+      'svc-02-name': 'Interior design', 'svc-02-desc': 'Hospitality, residential and commercial spaces. Material, furniture and detail as language.',
+      'svc-03-name': 'Custom furniture', 'svc-03-desc': 'Pieces designed and built for the space. Direct collaboration with local craftsmen and manufacturers.',
+      'svc-04-name': 'Design-build consulting', 'svc-04-desc': 'Project planning, development and management. Integration of design, budget and execution.',
+      'svc-05-name': 'Technical documentation', 'svc-05-desc': 'Surveys, construction drawings and specifications. Precision as a condition of the process.',
+      'essays-title': 'Thinking in process.',
+      'essay-1': 'Imperfection as method', 'etag-1': 'Praxis',
+      'essay-2': 'Building in the desert: materiality and climate', 'etag-2': 'Landscape',
+      'essay-3': 'The craftsman and the architect — a necessary collaboration', 'etag-3': 'Craft',
+      'essay-4': 'Hospitality and human scale in Baja California', 'etag-4': 'Territory',
+      'essay-5': 'Design-build: when designing and building are the same', 'etag-5': 'Process',
+      'about-label': 'About UD_A',
+      'about-heading': 'Praxis: where the idea<br>confronts matter.',
+      'about-p1': 'UD_A is an architecture, design and construction atelier with a design–build focus. We develop projects from conceptual vision to materialization, integrating design, technical documentation and execution as a continuous process.',
+      'about-p2': 'We work in architecture, interiors, furniture and custom systems. We collaborate with craftsmen, manufacturers and specialists to translate design decisions into viable construction solutions.',
+      'about-p3': 'Our practice focuses on hospitality, residential and commercial projects where architecture builds experiences linked to materiality, everyday use and landscape.',
+      'stat-projects': 'Projects', 'stat-scales': 'Scales',
+      'manifesto-label': 'Manifesto',
+      'manifesto-text': 'We design with imperfection. <span class="muted">We build with intention.</span> We reveal the hand, the mark, the scar. Between the primitive and the modern, <span class="muted">precision and error,</span> we build spaces that awaken the senses and question how we inhabit. <span class="muted">Imperfection is human. The human is essential.</span>',
+      'contact-heading': "Let's talk<br>about your project.",
+      'lbl-nombre': 'Name', 'lbl-email': 'Email', 'lbl-tipo': 'Project type', 'lbl-mensaje': 'Message',
+      'ph-nombre': 'Your name', 'ph-mensaje': 'Tell me about your project...',
+      'opt-arch': 'Architecture', 'opt-int': 'Interiors', 'opt-mob': 'Furniture', 'opt-cons': 'Consulting',
+      'btn-enviar': 'Send',
+      'fs-success-msg': '✓ Message received. We\'ll be in touch soon.',
+    }
+  };
+
+  function applyLang(l) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if (t[l][el.dataset.i18n]) el.textContent = t[l][el.dataset.i18n];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      if (t[l][el.dataset.i18nHtml]) el.innerHTML = t[l][el.dataset.i18nHtml];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      if (t[l][el.dataset.i18nPh]) el.placeholder = t[l][el.dataset.i18nPh];
+    });
+  }
+
+  /* ── NAVEGACIÓN ────────────────────────────────────────────── */
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
     window.scrollTo(0, 0);
+    /* Cierra el menú móvil si está abierto */
+    document.querySelector('.nav-links').classList.remove('open');
   }
 
-  /* Filtro de proyectos */
+  /* ── MENÚ MÓVIL ────────────────────────────────────────────── */
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  }
+
+  /* ── FILTRO PROYECTOS ──────────────────────────────────────── */
   function filterWork(cat, el) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
     document.querySelectorAll('.work-item').forEach(item => {
-      if (cat === 'all' || item.dataset.cat === cat) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
+      item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'block' : 'none';
     });
   }
 
-  /* Idioma — versión simple: recarga texto en español/inglés */
-  /* EDITAR: si quieres traducción completa, edita los textos aquí */
+  /* ── IDIOMA ────────────────────────────────────────────────── */
   let lang = 'es';
   function toggleLang() {
     lang = lang === 'es' ? 'en' : 'es';
     document.getElementById('lang-btn').textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
-    /* Aquí puedes agregar lógica de traducción si la necesitas */
-    alert('Traducción: conecta aquí tu sistema de i18n o Weglot.');
+    applyLang(lang);
   }
 
-  /* Formulario — Formspree Ajax */
+  /* ── FORMSPREE ─────────────────────────────────────────────── */
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
   formspree('initForm', { formElement: '#contact-form', formId: 'mykvbdow' });
 </script>
