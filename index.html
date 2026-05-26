@@ -590,6 +590,7 @@
   </div>
   <div class="nav-links">
     <a onclick="showPage('work')">Work</a>
+    <a onclick="showPage('portfolio')" data-i18n="nav-portfolio">Portafolio</a>
     <a onclick="showPage('services')">Services</a>
     <a onclick="showPage('essays')">Essays</a>
     <a onclick="showPage('about')">About</a>
@@ -618,7 +619,7 @@
       la construcción y el contexto. Forma, estructura y material
       respondiendo a condiciones reales.
     </p>
-    <a class="hero-cta" onclick="showPage('work')" data-i18n="h-cta">
+    <a class="hero-cta" onclick="showPage('portfolio')" data-i18n="h-cta">
       Ver trabajo →
     </a>
   </div>
@@ -710,6 +711,48 @@
       </div>
 
       <!-- EDITAR: Copia y pega uno de los bloques de arriba para agregar más proyectos -->
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: PORTFOLIO ANTERIOR
+════════════════════════════════════════════════════════════════ -->
+<div id="page-portfolio" class="page">
+
+  <div class="hero">
+    <p class="hero-tag" data-i18n="portfolio-tag">Proyectos anteriores · UD_A</p>
+    <h1 class="hero-title" data-i18n-html="portfolio-title">
+      Trabajo<br><em>anterior.</em>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-desc" data-i18n="portfolio-desc">
+      Una selección de proyectos de etapas anteriores del atelier.
+    </p>
+  </div>
+
+  <div class="section" style="padding-top: 3.5rem">
+    <div class="section-label" data-i18n="portfolio-label">Portafolio anterior</div>
+
+    <div class="work-grid" id="portfolio-grid">
+
+      <!-- AGREGAR PROYECTOS AQUÍ -->
+      <!-- Copia y pega este bloque para cada proyecto:
+
+      <div class="work-item" data-cat="arquitectura">
+        <div class="work-img">
+          <img src="imagenes/proyectos/CARPETA/foto.jpg" alt="Nombre del proyecto">
+        </div>
+        <div class="work-meta">
+          <span class="work-year">2022</span>
+          <div class="work-title">Nombre del Proyecto</div>
+          <div class="work-type">Arquitectura · Vivienda</div>
+        </div>
+      </div>
+
+      -->
 
     </div>
   </div>
@@ -952,10 +995,15 @@
   const t = {
     es: {
       'nav-sub': 'Un Desperfecto Atelier',
+      'nav-portfolio': 'Portafolio',
+      'portfolio-tag': 'Proyectos anteriores · UD_A',
+      'portfolio-title': 'Trabajo<br><em>anterior.</em>',
+      'portfolio-desc': 'Una selección de proyectos de etapas anteriores del atelier.',
+      'portfolio-label': 'Portafolio anterior',
       'h-tag': 'Arquitectura — Diseño — Construcción · La Paz, BCS',
       'h-title': 'Diseñamos con<br><em>imperfección.</em><br>Construimos con<br>intención.',
       'h-desc': 'Un atelier design–build donde la idea se confronta con la materia, la construcción y el contexto. Forma, estructura y material respondiendo a condiciones reales.',
-      'h-cta': 'Ver trabajo →',
+      'h-cta': 'Portafolio anterior →',
       'work-label': 'Proyectos seleccionados',
       'tab-all': 'Todos', 'tab-arch': 'Arquitectura', 'tab-int': 'Interiores', 'tab-mob': 'Mobiliario',
       'wt-arch-housing': 'Arquitectura · Vivienda', 'wt-int-retail': 'Interiores · Comercio',
@@ -990,10 +1038,15 @@
     },
     en: {
       'nav-sub': 'An Imperfection Atelier',
+      'nav-portfolio': 'Portfolio',
+      'portfolio-tag': 'Previous projects · UD_A',
+      'portfolio-title': 'Previous<br><em>work.</em>',
+      'portfolio-desc': 'A selection of projects from earlier stages of the atelier.',
+      'portfolio-label': 'Previous portfolio',
       'h-tag': 'Architecture — Design — Construction · La Paz, BCS',
       'h-title': 'We design with<br><em>imperfection.</em><br>We build with<br>intention.',
       'h-desc': 'A design–build atelier where the idea confronts matter, construction and context. Form, structure and material responding to real conditions.',
-      'h-cta': 'View work →',
+      'h-cta': 'Previous Work →',
       'work-label': 'Selected projects',
       'tab-all': 'All', 'tab-arch': 'Architecture', 'tab-int': 'Interiors', 'tab-mob': 'Furniture',
       'wt-arch-housing': 'Architecture · Housing', 'wt-int-retail': 'Interiors · Retail',
