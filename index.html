@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UD_A — Un Desperfecto Atelier</title>
+  <meta name="description" content="Atelier de arquitectura, diseño y construcción con enfoque design–build. La Paz, Baja California Sur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       UD_A — Un Desperfecto Atelier
+       Para editar: busca los comentarios /* EDITAR */
+       ============================================================ */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --mono: 'Roboto Mono', monospace;
+      --sans: system-ui, -apple-system, sans-serif;
+      --ink: #111;
+      --muted: #888;
+      --faint: #bbb;
+      --line: #e8e8e8;
+      --bg: #fff;
+      --bg2: #f5f5f5;
+    }
+
+    /* Dark mode automático */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #f0f0f0;
+        --muted: #888;
+        --faint: #555;
+        --line: #2a2a2a;
+        --bg: #0e0e0e;
+        --bg2: #1a1a1a;
+      }
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAVEGACIÓN ─────────────────────────────────────────── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 3rem;
+      border-bottom: 0.5px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-sub {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .lang-btn {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border: 0.5px solid var(--line);
+      padding: 4px 10px;
+      border-radius: 2px;
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .lang-btn:hover { border-color: var(--ink); }
+
+    /* ── SECCIONES BASE ─────────────────────────────────────── */
+    .section {
+      padding: 5rem 3rem;
+      border-bottom: 0.5px solid var(--line);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--line);
+    }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      padding: 7rem 3rem 5rem;
+      border-bottom: 0.5px solid var(--line);
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--mono);
+      font-size: clamp(32px, 5.5vw, 66px);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      max-width: 820px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--ink);
+      margin: 2.5rem 0;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 3rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding-bottom: 3px;
+      border-bottom: 0.5px solid var(--ink);
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hero-cta:hover { color: var(--muted); border-bottom-color: var(--muted); }
+
+    /* ── WORK GRID ──────────────────────────────────────────── */
+    .tab-bar {
+      display: flex;
+      margin-bottom: 3.5rem;
+      border-bottom: 0.5px solid var(--line);
+    }
+
+    .tab {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 0;
+      margin-right: 2.5rem;
+      cursor: pointer;
+      border-bottom: 1.5px solid transparent;
+      margin-bottom: -0.5px;
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+    }
+
+    .tab.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .work-item {
+      background: var(--bg);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .work-item:hover { opacity: 0.85; }
+
+    /* ── EDITAR: Reemplaza el fondo gris con tus imágenes ──────
+       En cada .work-img, cambia background por:
+       background-image: url('imagenes/nombre-proyecto.jpg');
+       background-size: cover;
+       background-position: center;
+       ─────────────────────────────────────────────────────── */
+    .work-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--bg2);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.25rem;
+      overflow: hidden;
+    }
+
+    .work-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .work-img-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .work-meta {
+      padding: 1.1rem 1.25rem;
+      border-top: 0.5px solid var(--line);
+    }
+
+    .work-title {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .work-type { font-size: 11px; color: var(--muted); }
+    .work-year { font-family: var(--mono); font-size: 10px; color: var(--faint); float: right; }
+
+    /* ── SERVICES ───────────────────────────────────────────── */
+    .service-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 40px;
+      align-items: start;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 0.5px solid var(--line);
+    }
+
+    .service-num { font-family: var(--mono); font-size: 10px; color: var(--faint); letter-spacing: 0.1em; padding-top: 2px; }
+    .service-name { font-family: var(--mono); font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .service-arrow { color: var(--faint); font-size: 18px; text-align: right; padding-top: 2px; }
+
+    /* ── ABOUT ──────────────────────────────────────────────── */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* EDITAR: Reemplaza el fondo gris con tu foto */
+    .about-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: var(--bg2);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-heading {
+      font-family: var(--mono);
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+
+    .about-text p { font-size: 13px; color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .about-detail {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 0.5px solid var(--line);
+    }
+
+    .about-stat span { font-family: var(--mono); display: block; font-size: 26px; font-weight: 500; }
+    .about-stat small { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ── MANIFIESTO ─────────────────────────────────────────── */
+    .manifesto-block { max-width: 600px; }
+
+    .manifesto-text {
+      font-family: var(--mono);
+      font-size: clamp(13px, 2vw, 17px);
+      font-weight: 400;
+      line-height: 1.9;
+      letter-spacing: -0.01em;
+    }
+
+    .manifesto-text .muted { color: var(--muted); }
+
+    /* ── ESSAYS ─────────────────────────────────────────────── */
+    .essay-row {
+      display: grid;
+      grid-template-columns: 70px 1fr 110px;
+      gap: 2rem;
+      align-items: baseline;
+      padding: 1.5rem 0;
+      border-bottom: 0.5px solid var(--line);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .essay-row:hover .essay-title { color: var(--muted); }
+    .essay-date { font-family: var(--mono); font-size: 10px; color: var(--faint); }
+    .essay-title { font-size: 14px; transition: color 0.2s; }
+    .essay-tag {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: right;
+      border: 0.5px solid var(--line);
+      padding: 3px 8px;
+      border-radius: 2px;
+      justify-self: end;
+    }
+
+    /* ── CONTACT ────────────────────────────────────────────── */
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .contact-heading {
+      font-family: var(--mono);
+      font-size: clamp(22px, 3.5vw, 38px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail { font-size: 13px; color: var(--muted); line-height: 2.8; }
+    .contact-detail a { color: var(--ink); text-decoration: none; border-bottom: 0.5px solid var(--line); transition: color 0.2s; }
+    .contact-detail a:hover { color: var(--muted); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: transparent;
+      border: 0;
+      border-bottom: 0.5px solid var(--line);
+      padding: 8px 0;
+      font-size: 13px;
+      color: var(--ink);
+      font-family: var(--sans);
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-bottom-color: var(--ink); }
+    .form-field textarea { resize: none; height: 80px; }
+
+    .form-submit {
+      align-self: flex-start;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 10px 22px;
+      border: 0.5px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .form-submit:hover { background: var(--ink); color: var(--bg); }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid var(--line);
+    }
+
+    .footer-copy { font-family: var(--mono); font-size: 10px; color: var(--faint); letter-spacing: 0.06em; }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-family: var(--mono); font-size: 10px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── PÁGINAS ────────────────────────────────────────────── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .section { padding: 3rem 1.5rem; }
+      .about-split,
+      .contact-split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .service-row { grid-template-columns: 40px 1fr; }
+      .service-arrow { display: none; }
+      .essay-row { grid-template-columns: 55px 1fr; }
+      .essay-tag { display: none; }
+      footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVEGACIÓN ──────────────────────────────────────────────── -->
+<nav>
+  <div>
+    <div class="nav-logo">UD_A</div>
+    <!-- EDITAR: cambia el subtítulo si quieres -->
+    <div class="nav-sub">Un Desperfecto Atelier</div>
+  </div>
+  <div class="nav-links">
+    <a onclick="showPage('work')">Work</a>
+    <a onclick="showPage('services')">Services</a>
+    <a onclick="showPage('essays')">Essays</a>
+    <a onclick="showPage('about')">About</a>
+    <a onclick="showPage('contact')">Contact</a>
+  </div>
+  <button class="lang-btn" onclick="toggleLang()" id="lang-btn">ES / EN</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: WORK
+════════════════════════════════════════════════════════════════ -->
+<div id="page-work" class="page active">
+
+  <div class="hero">
+    <!-- EDITAR: tagline del hero -->
+    <p class="hero-tag" id="h-tag">Arquitectura — Diseño — Construcción · La Paz, BCS</p>
+    <h1 class="hero-title" id="h-title">
+      Diseñamos con<br><em>imperfección.</em><br>Construimos con<br>intención.
+    </h1>
+    <div class="hero-rule"></div>
+    <!-- EDITAR: descripción corta -->
+    <p class="hero-desc" id="h-desc">
+      Un atelier design–build donde la idea se confronta con la materia,
+      la construcción y el contexto. Forma, estructura y material
+      respondiendo a condiciones reales.
+    </p>
+    <a class="hero-cta" id="h-cta" onclick="showPage('work')">
+      Ver trabajo →
+    </a>
+  </div>
+
+  <div class="section" style="padding-top: 3.5rem">
+    <div class="section-label">Proyectos seleccionados</div>
+
+    <div class="tab-bar">
+      <button class="tab active" onclick="filterWork('all', this)">Todos</button>
+      <button class="tab" onclick="filterWork('arquitectura', this)">Arquitectura</button>
+      <button class="tab" onclick="filterWork('interiores', this)">Interiores</button>
+      <button class="tab" onclick="filterWork('mobiliario', this)">Mobiliario</button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         EDITAR: PROYECTOS
+         Para cada proyecto:
+         1. Cambia el src de la imagen
+         2. Cambia el título, tipo y año
+         3. Mantén el data-cat igual al filtro (arquitectura / interiores / mobiliario)
+    ════════════════════════════════════════════════════════ -->
+    <div class="work-grid" id="work-grid">
+
+      <div class="work-item" data-cat="arquitectura">
+        <div class="work-img">
+          <!-- EDITAR: <img src="imagenes/casa-conchal.jpg" alt="Casa Conchal"> -->
+          <span class="work-img-label">→ Reemplaza con imagen</span>
+        </div>
+        <div class="work-meta">
+          <span class="work-year">2024</span>
+          <div class="work-title">Casa Conchal</div>
+          <div class="work-type">Arquitectura · Vivienda</div>
+        </div>
+      </div>
+
+      <div class="work-item" data-cat="interiores">
+        <div class="work-img">
+          <span class="work-img-label">→ Reemplaza con imagen</span>
+        </div>
+        <div class="work-meta">
+          <span class="work-year">2024</span>
+          <div class="work-title">Taller Centenario</div>
+          <div class="work-type">Interiores · Comercio</div>
+        </div>
+      </div>
+
+      <div class="work-item" data-cat="mobiliario">
+        <div class="work-img">
+          <span class="work-img-label">→ Reemplaza con imagen</span>
+        </div>
+        <div class="work-meta">
+          <span class="work-year">2023</span>
+          <div class="work-title">Mesa de trabajo UD_A 01</div>
+          <div class="work-type">Mobiliario · Edición</div>
+        </div>
+      </div>
+
+      <div class="work-item" data-cat="arquitectura">
+        <div class="work-img">
+          <span class="work-img-label">→ Reemplaza con imagen</span>
+        </div>
+        <div class="work-meta">
+          <span class="work-year">2023</span>
+          <div class="work-title">Palapa Los Planes</div>
+          <div class="work-type">Arquitectura · Hospitalidad</div>
+        </div>
+      </div>
+
+      <div class="work-item" data-cat="interiores">
+        <div class="work-img">
+          <span class="work-img-label">→ Reemplaza con imagen</span>
+        </div>
+        <div class="work-meta">
+          <span class="work-year">2023</span>
+          <div class="work-title">Residencia El Sargento</div>
+          <div class="work-type">Interiores · Vivienda</div>
+        </div>
+      </div>
+
+      <div class="work-item" data-cat="mobiliario">
+        <div class="work-img">
+          <span class="work-img-label">→ Reemplaza con imagen</span>
+        </div>
+        <div class="work-meta">
+          <span class="work-year">2022</span>
+          <div class="work-title">Banco / estante modular</div>
+          <div class="work-type">Mobiliario · Sistema</div>
+        </div>
+      </div>
+
+      <!-- EDITAR: Copia y pega uno de los bloques de arriba para agregar más proyectos -->
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: SERVICES
+════════════════════════════════════════════════════════════════ -->
+<div id="page-services" class="page">
+  <div class="hero" style="padding-bottom: 2rem">
+    <p class="hero-tag">Services</p>
+    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)">
+      Una práctica integrada<br>de diseño y construcción.
+    </h1>
+  </div>
+  <div class="section" style="padding-top: 2rem">
+
+    <!-- EDITAR: modifica nombre y descripción de cada servicio -->
+    <div class="service-row">
+      <span class="service-num">01</span>
+      <div>
+        <div class="service-name">Arquitectura</div>
+        <div class="service-desc">Proyectos de nueva planta, ampliaciones y rehabilitaciones. Proceso completo desde concepto hasta obra terminada.</div>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-row">
+      <span class="service-num">02</span>
+      <div>
+        <div class="service-name">Diseño de interiores</div>
+        <div class="service-desc">Espacios de hospitalidad, vivienda y comercio. Materialidad, mobiliario y detalle como lenguaje.</div>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-row">
+      <span class="service-num">03</span>
+      <div>
+        <div class="service-name">Mobiliario a medida</div>
+        <div class="service-desc">Piezas diseñadas y construidas para el espacio. Colaboración directa con artesanos y fabricantes locales.</div>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-row">
+      <span class="service-num">04</span>
+      <div>
+        <div class="service-name">Consultoría design-build</div>
+        <div class="service-desc">Planeación, desarrollo y gestión de proyectos. Integración entre diseño, presupuesto y ejecución.</div>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+    <div class="service-row">
+      <span class="service-num">05</span>
+      <div>
+        <div class="service-name">Documentación técnica</div>
+        <div class="service-desc">Levantamientos, planos de construcción y especificaciones. Precisión como condición del proceso.</div>
+      </div>
+      <div class="service-arrow">→</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: ESSAYS
+════════════════════════════════════════════════════════════════ -->
+<div id="page-essays" class="page">
+  <div class="hero" style="padding-bottom: 2rem">
+    <p class="hero-tag">Essays</p>
+    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)">
+      Pensamiento en proceso.
+    </h1>
+  </div>
+  <div class="section" style="padding-top: 2rem">
+
+    <!-- EDITAR: cambia fecha, título y categoría de cada ensayo -->
+    <!-- Para enlazar a un PDF o página: cambia href="#" por la URL real -->
+    <a class="essay-row" href="#">
+      <span class="essay-date">2025</span>
+      <span class="essay-title">La imperfección como método</span>
+      <span class="essay-tag">Praxis</span>
+    </a>
+
+    <a class="essay-row" href="#">
+      <span class="essay-date">2025</span>
+      <span class="essay-title">Construir en el desierto: materialidad y clima</span>
+      <span class="essay-tag">Paisaje</span>
+    </a>
+
+    <a class="essay-row" href="#">
+      <span class="essay-date">2024</span>
+      <span class="essay-title">El artesano y el arquitecto — una colaboración necesaria</span>
+      <span class="essay-tag">Oficio</span>
+    </a>
+
+    <a class="essay-row" href="#">
+      <span class="essay-date">2024</span>
+      <span class="essay-title">Hospitalidad y escala humana en Baja California</span>
+      <span class="essay-tag">Territorio</span>
+    </a>
+
+    <a class="essay-row" href="#">
+      <span class="essay-date">2024</span>
+      <span class="essay-title">Design-build: cuando diseñar y construir son lo mismo</span>
+      <span class="essay-tag">Proceso</span>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: ABOUT
+════════════════════════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="section">
+    <div class="section-label">Sobre UD_A</div>
+    <div class="about-split">
+
+      <div class="about-img">
+        <img src="imagenes/about/about.jpg" alt="UD_A — Un Desperfecto Atelier">
+      </div>
+
+      <div class="about-text">
+        <!-- EDITAR: heading y párrafos -->
+        <h2 class="about-heading">
+          Praxis: donde la idea<br>se confronta con la materia.
+        </h2>
+        <p>UD_A es un atelier de arquitectura, diseño y construcción con enfoque design–build. Desarrollamos proyectos desde la visión conceptual hasta la materialización, integrando diseño, documentación técnica y ejecución como un proceso continuo.</p>
+        <p>Trabajamos en arquitectura, interiores, mobiliario y sistemas a medida. Colaboramos con artesanos, fabricantes y especialistas para traducir decisiones de diseño en soluciones constructivas viables.</p>
+        <p>Nuestra práctica se enfoca en proyectos de hospitalidad, vivienda y espacios comerciales donde la arquitectura construye experiencias vinculadas a la materialidad, el uso cotidiano y al paisaje.</p>
+
+        <div class="about-detail">
+          <!-- EDITAR: cambia los números y etiquetas -->
+          <div class="about-stat"><span>9+</span><small>Proyectos</small></div>
+          <div class="about-stat"><span>3</span><small>Escalas</small></div>
+          <div class="about-stat"><span>BCS</span><small>Base</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Manifiesto</div>
+    <div class="manifesto-block">
+      <!-- EDITAR: texto del manifiesto -->
+      <p class="manifesto-text">
+        Diseñamos con imperfección.
+        <span class="muted">Construimos con intención.</span>
+        Revelamos la mano, la huella, la cicatriz.
+        Entre lo primitivo y lo moderno,
+        <span class="muted">la precisión y el error,</span>
+        construimos espacios que despiertan los sentidos
+        y cuestionan cómo habitamos.
+        <span class="muted">Lo imperfecto es humano. Lo humano es esencial.</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: CONTACT
+════════════════════════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="section">
+    <div class="contact-split">
+      <div>
+        <!-- EDITAR: heading de contacto -->
+        <h2 class="contact-heading">Hablemos<br>de tu proyecto.</h2>
+        <div class="contact-detail">
+          La Paz, Baja California Sur<br>
+          México<br><br>
+          <!-- EDITAR: correo y redes -->
+          <a href="mailto:el_desperfecto@udatelier.com">el_desperfecto@udatelier.com</a><br><br>
+          <a href="https://www.instagram.com/ud_atelier" target="_blank">@ud_atelier</a><br>
+          <a href="#">LinkedIn</a><!-- EDITAR: agrega tu URL de LinkedIn -->
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-field">
+          <label>Nombre</label>
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="tu@correo.com" required>
+        </div>
+        <div class="form-field">
+          <label>Tipo de proyecto</label>
+          <select name="tipo">
+            <option>Arquitectura</option>
+            <option>Interiores</option>
+            <option>Mobiliario</option>
+            <option>Consultoría</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Mensaje</label>
+          <textarea name="mensaje" placeholder="Cuéntame sobre tu proyecto..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer>
+  <span class="footer-copy">© 2025 UD_A — udatelier.com</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/ud_atelier" target="_blank">Instagram</a>
+    <a href="#">LinkedIn</a><!-- EDITAR: URL de LinkedIn -->
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+     No necesitas tocar esto a menos que quieras cambiar
+     la lógica de navegación o el filtro de proyectos.
+════════════════════════════════════════════════════════════════ -->
+<script>
+  /* Navegación entre páginas */
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  /* Filtro de proyectos */
+  function filterWork(cat, el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.work-item').forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  /* Idioma — versión simple: recarga texto en español/inglés */
+  /* EDITAR: si quieres traducción completa, edita los textos aquí */
+  let lang = 'es';
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    document.getElementById('lang-btn').textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
+    /* Aquí puedes agregar lógica de traducción si la necesitas */
+    alert('Traducción: conecta aquí tu sistema de i18n o Weglot.');
+  }
+
+  /* Formulario — conecta con Formspree, EmailJS o tu backend */
+  function handleSubmit(e) {
+    e.preventDefault();
+    /* EDITAR: reemplaza este alert con tu servicio de email */
+    /* Opción fácil: crea una cuenta en formspree.io y cambia el action del form */
+    alert('Mensaje recibido. Pronto nos ponemos en contacto.');
+    e.target.reset();
+  }
+</script>
+
+</body>
+</html>
