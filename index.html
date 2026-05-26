@@ -459,6 +459,29 @@
     .page { display: none; }
     .page.active { display: block; }
 
+    /* ── FORMSPREE ──────────────────────────────────────────── */
+    .fs-success {
+      display: none;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      padding: 1.5rem 0;
+      border-top: 0.5px solid var(--line);
+    }
+    .fs-field-error,
+    .fs-form-error {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #c00;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+    [data-fs-submit-btn]:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 1.25rem 1.5rem; }
@@ -790,14 +813,19 @@
         </div>
       </div>
 
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div data-fs-success class="fs-success">
+        ✓ Mensaje recibido. Pronto nos ponemos en contacto.
+      </div>
+
+      <form class="contact-form" id="contact-form">
         <div class="form-field">
           <label>Nombre</label>
           <input type="text" name="nombre" placeholder="Tu nombre" required>
         </div>
         <div class="form-field">
           <label>Email</label>
-          <input type="email" name="email" placeholder="tu@correo.com" required>
+          <input type="email" name="email" placeholder="tu@correo.com" required data-fs-field>
+          <span data-fs-error="email" class="fs-field-error"></span>
         </div>
         <div class="form-field">
           <label>Tipo de proyecto</label>
@@ -812,7 +840,8 @@
           <label>Mensaje</label>
           <textarea name="mensaje" placeholder="Cuéntame sobre tu proyecto..."></textarea>
         </div>
-        <button type="submit" class="form-submit">Enviar</button>
+        <div data-fs-error class="fs-form-error"></div>
+        <button type="submit" class="form-submit" data-fs-submit-btn>Enviar</button>
       </form>
     </div>
   </div>
@@ -865,15 +894,11 @@
     alert('Traducción: conecta aquí tu sistema de i18n o Weglot.');
   }
 
-  /* Formulario — conecta con Formspree, EmailJS o tu backend */
-  function handleSubmit(e) {
-    e.preventDefault();
-    /* EDITAR: reemplaza este alert con tu servicio de email */
-    /* Opción fácil: crea una cuenta en formspree.io y cambia el action del form */
-    alert('Mensaje recibido. Pronto nos ponemos en contacto.');
-    e.target.reset();
-  }
+  /* Formulario — Formspree Ajax */
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'mykvbdow' });
 </script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
