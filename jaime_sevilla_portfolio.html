@@ -25,14 +25,17 @@
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px var(--pad); background: rgba(255,255,255,0.96); border-bottom: 0.5px solid var(--gray-rule); backdrop-filter: blur(8px); }
-  .nav-logo { font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+  .nav-logo { font-family: var(--sans); font-weight: 500; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 0.75rem; }
+  .nav-logo img { height: 32px; width: auto; display: block; }
+  .lang-toggle { font-family: var(--sans); font-size: 10px; letter-spacing: 0.1em; cursor: pointer; border: 0.5px solid var(--gray-rule); padding: 4px 10px; border-radius: 2px; background: transparent; color: var(--black); transition: border-color 0.2s; }
+  .lang-toggle:hover { border-color: var(--black); }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--black); }
   .nav-tag { font-size: 11px; letter-spacing: 0.08em; color: var(--gray-mid); text-transform: uppercase; }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; align-items: flex-end; padding: 120px var(--pad) 80px; border-bottom: 0.5px solid var(--gray-rule); position: relative; }
+  .hero { display: flex; align-items: flex-end; padding: 140px var(--pad) 60px; border-bottom: 0.5px solid var(--gray-rule); position: relative; }
   .hero-corner-mark { position: absolute; font-size: 10px; letter-spacing: 0.08em; color: var(--gray-mid); text-transform: uppercase; }
   .hero-corner-mark.tl { top: 80px; left: var(--pad); }
   .hero-corner-mark.tr { top: 80px; right: var(--pad); text-align: right; }
@@ -123,14 +126,20 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">UD_A</a>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="UD_A">
+    <span>UD_A</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#bio">Perfil</a></li>
     <li><a href="#experiencia">Experiencia</a></li>
     <li><a href="#proyectos">Proyectos</a></li>
     <li><a href="#empeño">Empeño</a></li>
   </ul>
-  <span class="nav-tag">Portafolio — 2008–2022</span>
+  <div style="display:flex; align-items:center; gap:1rem;">
+    <button class="lang-toggle" onclick="toggleLang()" id="lang-btn">ES / EN</button>
+    <span class="nav-tag">Portafolio — 2008–2022</span>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -556,5 +565,13 @@
   <span class="pg-num">udatelier.com</span>
 </footer>
 
+<script>
+  let lang = 'es';
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    document.getElementById('lang-btn').textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
+    document.documentElement.lang = lang;
+  }
+</script>
 </body>
 </html>
