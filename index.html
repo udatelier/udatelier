@@ -55,16 +55,28 @@
     }
 
     /* ── NAVEGACIÓN ─────────────────────────────────────────── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+    }
+
+    .util-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0.35rem 3rem;
+      border-bottom: 0.5px solid var(--line);
+    }
+
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.75rem 3rem;
       border-bottom: 0.5px solid var(--line);
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      z-index: 100;
+      position: relative;
     }
 
     .nav-logo {
@@ -156,7 +168,7 @@
 
     .hero-title {
       font-family: var(--mono);
-      font-size: clamp(32px, 5.5vw, 66px);
+      font-size: clamp(32px, 10vw, 66px);
       font-weight: 500;
       line-height: 1.08;
       letter-spacing: -0.02em;
@@ -539,6 +551,7 @@
 
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 768px) {
+      .util-bar { padding: 0.35rem 1.5rem; }
       nav { padding: 1.25rem 1.5rem; }
       .menu-btn { display: block; }
 
@@ -565,7 +578,17 @@
       /* Menú abierto */
       .nav-links.open { display: flex; }
 
-      .hero { padding: 4rem 1.5rem 3rem; }
+      /* Tabs scrollables horizontalmente */
+      .tab-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+      }
+      .tab-bar::-webkit-scrollbar { display: none; }
+      .tab { flex-shrink: 0; margin-right: 1.5rem; }
+
+      .hero { padding: 2.5rem 1.5rem 2.5rem; }
       .section { padding: 3rem 1.5rem; }
       .about-split,
       .contact-split { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -580,28 +603,30 @@
 <body>
 
 <!-- ── NAVEGACIÓN ──────────────────────────────────────────────── -->
-<nav>
-  <div style="display:flex; align-items:center; gap:0.85rem;">
-    <img src="logo.png" alt="UD_A logo" style="height:38px; width:auto; display:block;">
-    <div>
-      <div class="nav-logo">UD_A</div>
-      <div class="nav-sub" data-i18n="nav-sub">Un Desperfecto Atelier</div>
-    </div>
-  </div>
-  <div class="nav-links">
-    <a onclick="showPage('work')" data-i18n="nav-work">Work</a>
-    <a href="jaime_sevilla_portfolio.html" data-i18n="nav-portfolio">Trayectoria</a>
-    <a onclick="showPage('services')" data-i18n="nav-services">Services</a>
-    <a onclick="showPage('desperfecto')">El Desperfecto</a>
-    <a onclick="showPage('essays')" data-i18n="nav-essays">Essays</a>
-    <a onclick="showPage('about')" data-i18n="nav-about">About</a>
-    <a onclick="showPage('contact')" data-i18n="nav-contact">Contact</a>
-  </div>
-  <div style="display:flex; align-items:center; gap:0.75rem;">
-    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menú">☰</button>
+<header class="site-header">
+  <div class="util-bar">
     <button class="lang-btn" onclick="toggleLang()" id="lang-btn">ES / EN</button>
   </div>
-</nav>
+  <nav>
+    <div style="display:flex; align-items:center; gap:0.85rem;">
+      <img src="logo.png" alt="UD_A logo" style="height:38px; width:auto; display:block;">
+      <div>
+        <div class="nav-logo">UD_A</div>
+        <div class="nav-sub" data-i18n="nav-sub">Un Desperfecto Atelier</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a onclick="showPage('work')" data-i18n="nav-work">Work</a>
+      <a href="jaime_sevilla_portfolio.html" data-i18n="nav-portfolio">Trayectoria</a>
+      <a onclick="showPage('services')" data-i18n="nav-services">Services</a>
+      <a onclick="showPage('desperfecto')">El Desperfecto</a>
+      <a onclick="showPage('essays')" data-i18n="nav-essays">Essays</a>
+      <a onclick="showPage('about')" data-i18n="nav-about">About</a>
+      <a onclick="showPage('contact')" data-i18n="nav-contact">Contact</a>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menú">☰</button>
+  </nav>
+</header>
 
 
 <!-- ══════════════════════════════════════════════════════════════
