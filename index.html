@@ -69,6 +69,22 @@
       position: relative;
     }
 
+    .nav-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      padding: 0.85rem 3rem;
+      border-bottom: 0.5px solid var(--line);
+      gap: 2rem;
+    }
+
     .nav-logo {
       font-family: var(--mono);
       font-size: 14px;
@@ -545,28 +561,34 @@
       nav { padding: 1.25rem 1.5rem; }
       .menu-btn { display: block; }
 
+      .nav-tag { display: none; }
+      .nav-bar { display: none; }
       /* Menú oculto por defecto en móvil */
       .nav-links {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        gap: 0;
+      }
+      .nav-bar {
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
         background: var(--bg);
         border-bottom: 0.5px solid var(--line);
-        flex-direction: column;
         padding: 1rem 1.5rem 1.5rem;
-        gap: 0;
         z-index: 99;
+        flex-direction: column;
       }
-      .nav-links a {
+      .nav-bar .nav-links a {
         padding: 0.75rem 0;
         border-bottom: 0.5px solid var(--line);
         font-size: 12px;
       }
-      .nav-links a:last-child { border-bottom: none; }
+      .nav-bar .nav-links a:last-child { border-bottom: none; }
       /* Menú abierto */
-      .nav-links.open { display: flex; }
+      .nav-bar.open { display: flex; }
 
       /* Tabs scrollables horizontalmente */
       .tab-bar {
@@ -605,6 +627,10 @@
         <div class="nav-sub" data-i18n="nav-sub">Un Desperfecto Atelier</div>
       </div>
     </div>
+    <p class="nav-tag" data-i18n="h-tag">Arquitectura — Diseño — Construcción — Arte · La Paz, BCS</p>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menú">☰</button>
+  </nav>
+  <div class="nav-bar">
     <div class="nav-links">
       <a onclick="showPage('work')" data-i18n="nav-work">Work</a>
       <a href="jaime_sevilla_portfolio.html" data-i18n="nav-portfolio">Trayectoria</a>
@@ -614,8 +640,7 @@
       <a onclick="showPage('about')" data-i18n="nav-about">About</a>
       <a onclick="showPage('contact')" data-i18n="nav-contact">Contact</a>
     </div>
-    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menú">☰</button>
-  </nav>
+  </div>
 </header>
 
 
@@ -625,7 +650,6 @@
 <div id="page-work" class="page active">
 
   <div class="hero">
-    <p class="hero-tag" data-i18n="h-tag">Arquitectura — Diseño — Construcción — Arte · La Paz, BCS</p>
     <h1 class="hero-title" data-i18n-html="h-title">
       Diseñamos con<br><em>imperfección.</em><br>Construimos con<br>intención.
     </h1>
@@ -1159,12 +1183,12 @@
     document.getElementById('page-' + name).classList.add('active');
     window.scrollTo(0, 0);
     /* Cierra el menú móvil si está abierto */
-    document.querySelector('.nav-links').classList.remove('open');
+    document.querySelector('.nav-bar').classList.remove('open');
   }
 
   /* ── MENÚ MÓVIL ────────────────────────────────────────────── */
   function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('open');
+    document.querySelector('.nav-bar').classList.toggle('open');
   }
 
   /* ── FILTRO PROYECTOS ──────────────────────────────────────── */
