@@ -665,10 +665,11 @@
     <div class="section-label" data-i18n="work-label">Proyectos seleccionados</div>
 
     <div class="tab-bar">
-      <button class="tab active" onclick="filterWork('all', this)" data-i18n="tab-all">Todos</button>
-      <button class="tab" onclick="filterWork('arquitectura', this)" data-i18n="tab-arch">Arquitectura</button>
+      <button class="tab active" onclick="filterWork('arquitectura', this)" data-i18n="tab-arch">Arquitectura</button>
       <button class="tab" onclick="filterWork('interiores', this)" data-i18n="tab-int">Interiores</button>
-      <button class="tab" onclick="filterWork('mobiliario', this)" data-i18n="tab-mob">Mobiliario</button>
+      <button class="tab" onclick="filterWork('paisajismo', this)" data-i18n="tab-land">Paisajismo</button>
+      <button class="tab" onclick="filterWork('construccion', this)" data-i18n="tab-const">Construcción</button>
+      <button class="tab" onclick="filterWork('hechura', this)" data-i18n="tab-hech">Hechura</button>
       <button class="tab" onclick="filterWork('arte', this)" data-i18n="tab-art">Curaduría de Arte</button>
     </div>
 
@@ -681,37 +682,36 @@
     ════════════════════════════════════════════════════════ -->
     <div class="work-grid" id="work-grid">
 
-      <div class="work-item" data-cat="arquitectura">
+      <div class="work-item" data-cat="paisajismo">
         <div class="work-img">
-          <!-- EDITAR: <img src="imagenes/casa-conchal.jpg" alt="Casa Conchal"> -->
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
         <div class="work-meta">
           <span class="work-year">2024</span>
-          <div class="work-title">Casa Conchal</div>
-          <div class="work-type" data-i18n="wt-arch-housing">Arquitectura · Vivienda</div>
+          <div class="work-title">Paisajismo de la CUEVA</div>
+          <div class="work-type" data-i18n="wt-land-ext">Paisajismo · Exterior</div>
         </div>
       </div>
 
       <div class="work-item" data-cat="interiores">
         <div class="work-img">
-          <img src="imagenes/proyectos/Cueva/381FA292-7D17-4D0D-8929-B974A1D88305.JPG" alt="La Cuevita del Amor">
+          <img src="imagenes/proyectos/Cueva/381FA292-7D17-4D0D-8929-B974A1D88305.JPG" alt="CUEVA">
         </div>
         <div class="work-meta">
           <span class="work-year">2025</span>
-          <div class="work-title">La Cuevita del Amor</div>
+          <div class="work-title">CUEVA</div>
           <div class="work-type" data-i18n="wt-int-retail">Interiores · Comercio</div>
         </div>
       </div>
 
-      <div class="work-item" data-cat="mobiliario">
+      <div class="work-item" data-cat="hechura">
         <div class="work-img">
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
         <div class="work-meta">
           <span class="work-year">2023</span>
           <div class="work-title">Mesa de trabajo UD_A 01</div>
-          <div class="work-type" data-i18n="wt-furn-edition">Mobiliario · Edición</div>
+          <div class="work-type" data-i18n="wt-hech-mueble">Hechura · Mueble</div>
         </div>
       </div>
 
@@ -737,14 +737,14 @@
         </div>
       </div>
 
-      <div class="work-item" data-cat="mobiliario">
+      <div class="work-item" data-cat="hechura">
         <div class="work-img">
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
         <div class="work-meta">
           <span class="work-year">2022</span>
           <div class="work-title">Banco / estante modular</div>
-          <div class="work-type" data-i18n="wt-furn-system">Mobiliario · Sistema</div>
+          <div class="work-type" data-i18n="wt-hech-sistema">Hechura · Sistema</div>
         </div>
       </div>
 
@@ -1081,10 +1081,12 @@
       'h-desc': 'Un atelier design–build donde la idea se confronta con la materia, la construcción y el contexto. Forma, estructura y material respondiendo a condiciones reales.',
       'h-cta': 'Ver trayectoria →',
       'work-label': 'Proyectos seleccionados',
-      'tab-all': 'Todos', 'tab-arch': 'Arquitectura', 'tab-int': 'Interiores', 'tab-mob': 'Mobiliario', 'tab-art': 'Curaduría de Arte',
+      'tab-arch': 'Arquitectura', 'tab-int': 'Interiores', 'tab-land': 'Paisajismo',
+      'tab-const': 'Construcción', 'tab-hech': 'Hechura', 'tab-art': 'Curaduría de Arte',
       'wt-arch-housing': 'Arquitectura · Vivienda', 'wt-int-retail': 'Interiores · Comercio',
-      'wt-furn-edition': 'Mobiliario · Edición', 'wt-arch-hospitality': 'Arquitectura · Hospitalidad',
-      'wt-int-housing': 'Interiores · Vivienda', 'wt-furn-system': 'Mobiliario · Sistema',
+      'wt-arch-hospitality': 'Arquitectura · Hospitalidad', 'wt-int-housing': 'Interiores · Vivienda',
+      'wt-land-ext': 'Paisajismo · Exterior',
+      'wt-hech-mueble': 'Hechura · Mueble', 'wt-hech-sistema': 'Hechura · Sistema',
       'svc-hero-title': 'Una práctica integrada<br>de diseño y construcción.',
       'svc-01-name': 'Arquitectura', 'svc-01-desc': 'Proyectos de nueva planta, ampliaciones y rehabilitaciones. Proceso completo desde concepto hasta obra terminada.',
       'svc-02-name': 'Diseño de interiores', 'svc-02-desc': 'Espacios de hospitalidad, vivienda y comercio. Materialidad, mobiliario y detalle como lenguaje.',
@@ -1132,10 +1134,12 @@
       'h-desc': 'A design–build atelier where the idea confronts matter, construction and context. Form, structure and material responding to real conditions.',
       'h-cta': 'View CV →',
       'work-label': 'Selected projects',
-      'tab-all': 'All', 'tab-arch': 'Architecture', 'tab-int': 'Interiors', 'tab-mob': 'Furniture', 'tab-art': 'Art Curation',
+      'tab-arch': 'Architecture', 'tab-int': 'Interiors', 'tab-land': 'Landscaping',
+      'tab-const': 'Construction', 'tab-hech': 'Hechura', 'tab-art': 'Art Curation',
       'wt-arch-housing': 'Architecture · Housing', 'wt-int-retail': 'Interiors · Retail',
-      'wt-furn-edition': 'Furniture · Edition', 'wt-arch-hospitality': 'Architecture · Hospitality',
-      'wt-int-housing': 'Interiors · Housing', 'wt-furn-system': 'Furniture · System',
+      'wt-arch-hospitality': 'Architecture · Hospitality', 'wt-int-housing': 'Interiors · Housing',
+      'wt-land-ext': 'Landscaping · Exterior',
+      'wt-hech-mueble': 'Hechura · Furniture', 'wt-hech-sistema': 'Hechura · System',
       'svc-hero-title': 'An integrated<br>design and construction practice.',
       'svc-01-name': 'Architecture', 'svc-01-desc': 'New construction, extensions and renovations. Full process from concept to completed work.',
       'svc-02-name': 'Interior design', 'svc-02-desc': 'Hospitality, residential and commercial spaces. Material, furniture and detail as language.',
@@ -1224,6 +1228,9 @@
     const img = div.querySelector('img');
     if (img) div.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
+
+  /* Inicializa el grid mostrando solo Arquitectura al cargar */
+  filterWork('arquitectura', document.querySelector('.tab'));
 
   /* ── FORMSPREE ─────────────────────────────────────────────── */
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
