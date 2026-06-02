@@ -632,13 +632,14 @@
   </nav>
   <div class="nav-bar">
     <div class="nav-links">
-      <a onclick="showPage('work')" data-i18n="nav-work">Work</a>
+      <a onclick="showPage('work')" data-i18n="nav-work">Proyectos</a>
       <a href="jaime_sevilla_portfolio.html" data-i18n="nav-portfolio">Trayectoria</a>
-      <a onclick="showPage('services')" data-i18n="nav-services">Services</a>
-      <a onclick="showPage('desperfecto')">El Desperfecto</a>
+      <a onclick="showPage('services')" data-i18n="nav-services">Servicios</a>
+      <a onclick="showPage('desperfecto')">El_Desperfecto</a>
+      <a onclick="showPage('hechura')" data-i18n="nav-hechura">Hechura</a>
       <a onclick="showPage('essays')" data-i18n="nav-essays">Essays</a>
       <a onclick="showPage('about')" data-i18n="nav-about">About</a>
-      <a onclick="showPage('contact')" data-i18n="nav-contact">Contact</a>
+      <a onclick="showPage('contact')" data-i18n="nav-contact">Contacto</a>
     </div>
   </div>
 </header>
@@ -665,7 +666,8 @@
     <div class="section-label" data-i18n="work-label">Proyectos seleccionados</div>
 
     <div class="tab-bar">
-      <button class="tab active" onclick="filterWork('arquitectura', this)" data-i18n="tab-arch">Arquitectura</button>
+      <button class="tab active" onclick="filterWork('all', this)" data-i18n="tab-all">Todos</button>
+      <button class="tab" onclick="filterWork('arquitectura', this)" data-i18n="tab-arch">Arquitectura</button>
       <button class="tab" onclick="filterWork('interiores', this)" data-i18n="tab-int">Interiores</button>
       <button class="tab" onclick="filterWork('paisajismo', this)" data-i18n="tab-land">Paisajismo</button>
       <button class="tab" onclick="filterWork('construccion', this)" data-i18n="tab-const">Construcción</button>
@@ -693,14 +695,14 @@
         </div>
       </div>
 
-      <div class="work-item" data-cat="interiores">
+      <div class="work-item" data-cat="arquitectura">
         <div class="work-img">
           <img src="imagenes/proyectos/Cueva/381FA292-7D17-4D0D-8929-B974A1D88305.JPG" alt="CUEVA">
         </div>
         <div class="work-meta">
           <span class="work-year">2025</span>
           <div class="work-title">CUEVA</div>
-          <div class="work-type" data-i18n="wt-int-retail">Interiores · Comercio</div>
+          <div class="work-type" data-i18n="wt-arch-remo">Arquitectura · Remodelación</div>
         </div>
       </div>
 
@@ -889,6 +891,30 @@
 
 
 <!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: HECHURA
+════════════════════════════════════════════════════════════════ -->
+<div id="page-hechura" class="page">
+  <div class="hero" style="padding-bottom: 2rem">
+    <p class="hero-tag">Hechura</p>
+    <h1 class="hero-title" style="font-size: clamp(26px, 4vw, 48px)" data-i18n-html="hech-hero-title">
+      Mueble, objeto<br><em>y sistema.</em>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-desc" data-i18n="hech-hero-desc">
+      Piezas diseñadas y construidas desde el atelier. Colaboración directa con artesanos y fabricantes locales.
+    </p>
+  </div>
+  <div class="section" style="padding-top: 3.5rem">
+    <div class="section-label" data-i18n="hech-label">Hechura</div>
+    <div class="work-grid" id="hechura-grid">
+      <!-- AGREGAR PROYECTOS DE HECHURA AQUÍ -->
+      <p style="font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.08em; padding: 2rem 0;" data-i18n="hech-empty">Próximamente — Soon</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
      PÁGINA: ESSAYS
 ════════════════════════════════════════════════════════════════ -->
 <div id="page-essays" class="page">
@@ -1063,15 +1089,21 @@
   const t = {
     es: {
       'nav-sub': 'Un Desperfecto Atelier',
-      'nav-work': 'Work',
+      'nav-work': 'Proyectos',
       'nav-portfolio': 'Trayectoria',
       'nav-services': 'Servicios',
-      'nav-essays': 'Ensayos',
-      'nav-about': 'Acerca',
+      'nav-hechura': 'Hechura',
+      'nav-essays': 'Essays',
+      'nav-about': 'About',
       'nav-contact': 'Contacto',
       'desp-hero-title': 'Notas sobre proceso,<br><em>materia y oficio.</em>',
       'desp-hero-desc': 'Reflexiones del atelier sobre arquitectura, diseño y construcción. Fragmentos, referencias y preguntas sin respuesta.',
       'desp-empty': 'Próximamente',
+      'hech-hero-title': 'Mueble, objeto<br><em>y sistema.</em>',
+      'hech-hero-desc': 'Piezas diseñadas y construidas desde el atelier. Colaboración directa con artesanos y fabricantes locales.',
+      'hech-label': 'Hechura',
+      'hech-empty': 'Próximamente',
+      'tab-all': 'Todos',
       'portfolio-tag': 'Proyectos anteriores · UD_A',
       'portfolio-title': 'Trabajo<br><em>anterior.</em>',
       'portfolio-desc': 'Una selección de proyectos de etapas anteriores del atelier.',
@@ -1083,7 +1115,8 @@
       'work-label': 'Proyectos seleccionados',
       'tab-arch': 'Arquitectura', 'tab-int': 'Interiores', 'tab-land': 'Paisajismo',
       'tab-const': 'Construcción', 'tab-hech': 'Hechura', 'tab-art': 'Curaduría de Arte',
-      'wt-arch-housing': 'Arquitectura · Vivienda', 'wt-int-retail': 'Interiores · Comercio',
+      'wt-arch-housing': 'Arquitectura · Vivienda', 'wt-arch-remo': 'Arquitectura · Remodelación',
+      'wt-int-retail': 'Interiores · Comercio',
       'wt-arch-hospitality': 'Arquitectura · Hospitalidad', 'wt-int-housing': 'Interiores · Vivienda',
       'wt-land-ext': 'Paisajismo · Exterior',
       'wt-hech-mueble': 'Hechura · Mueble', 'wt-hech-sistema': 'Hechura · Sistema',
@@ -1116,15 +1149,21 @@
     },
     en: {
       'nav-sub': 'An Imperfection Atelier',
-      'nav-work': 'Work',
+      'nav-work': 'Projects',
       'nav-portfolio': 'Trajectory',
       'nav-services': 'Services',
+      'nav-hechura': 'Hechura',
       'nav-essays': 'Essays',
       'nav-about': 'About',
       'nav-contact': 'Contact',
       'desp-hero-title': 'Notes on process,<br><em>matter and craft.</em>',
       'desp-hero-desc': 'Reflections from the atelier on architecture, design and construction. Fragments, references and unanswered questions.',
       'desp-empty': 'Coming soon',
+      'hech-hero-title': 'Furniture, object<br><em>and system.</em>',
+      'hech-hero-desc': 'Pieces designed and built from the atelier. Direct collaboration with local craftsmen and manufacturers.',
+      'hech-label': 'Hechura',
+      'hech-empty': 'Coming soon',
+      'tab-all': 'All',
       'portfolio-tag': 'Previous projects · UD_A',
       'portfolio-title': 'Previous<br><em>work.</em>',
       'portfolio-desc': 'A selection of projects from earlier stages of the atelier.',
@@ -1136,7 +1175,8 @@
       'work-label': 'Selected projects',
       'tab-arch': 'Architecture', 'tab-int': 'Interiors', 'tab-land': 'Landscaping',
       'tab-const': 'Construction', 'tab-hech': 'Hechura', 'tab-art': 'Art Curation',
-      'wt-arch-housing': 'Architecture · Housing', 'wt-int-retail': 'Interiors · Retail',
+      'wt-arch-housing': 'Architecture · Housing', 'wt-arch-remo': 'Architecture · Renovation',
+      'wt-int-retail': 'Interiors · Retail',
       'wt-arch-hospitality': 'Architecture · Hospitality', 'wt-int-housing': 'Interiors · Housing',
       'wt-land-ext': 'Landscaping · Exterior',
       'wt-hech-mueble': 'Hechura · Furniture', 'wt-hech-sistema': 'Hechura · System',
@@ -1229,8 +1269,8 @@
     if (img) div.addEventListener('click', () => openLightbox(img.src, img.alt));
   });
 
-  /* Inicializa el grid mostrando solo Arquitectura al cargar */
-  filterWork('arquitectura', document.querySelector('.tab'));
+  /* Inicializa el grid mostrando todos los proyectos al cargar */
+  filterWork('all', document.querySelector('.tab'));
 
   /* ── FORMSPREE ─────────────────────────────────────────────── */
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
