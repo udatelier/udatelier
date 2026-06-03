@@ -118,6 +118,15 @@
 
     .nav-links a:hover { color: var(--ink); }
 
+    .nav-links a + a::before {
+      content: '//';
+      color: var(--faint);
+      margin-right: 2rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      pointer-events: none;
+    }
+
     .lang-btn {
       font-family: var(--mono);
       font-size: 10px;
