@@ -415,11 +415,11 @@
 
     .essay-row:hover .essay-title { color: var(--muted); }
     .essay-date { font-family: var(--mono); font-size: 10px; color: var(--faint); }
-    .essay-title { font-size: 14px; transition: color 0.2s; }
+    .essay-title { font-size: 14px; color: var(--faint); transition: color 0.2s; }
     .essay-tag {
       font-family: var(--mono);
       font-size: 9px;
-      color: var(--muted);
+      color: var(--faint);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       text-align: right;
@@ -978,7 +978,7 @@
 
     <a class="essay-row" onclick="showPage('manifesto')" style="cursor:pointer;">
       <span class="essay-date">2025</span>
-      <span class="essay-title" data-i18n="manif-essay-title">Un desperfecto atelier Manifiesto</span>
+      <span class="essay-title" data-i18n="manif-essay-title" style="color: var(--ink); font-weight: 700;">Un desperfecto atelier Manifiesto</span>
       <span class="essay-tag" data-i18n="manif-essay-tag">Manifiesto</span>
     </a>
 
