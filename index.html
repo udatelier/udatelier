@@ -267,6 +267,9 @@
       background: var(--bg);
       cursor: pointer;
       transition: opacity 0.2s;
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
 
     .work-item:hover { opacity: 0.85; }
@@ -649,14 +652,14 @@
   </nav>
   <div class="nav-bar">
     <div class="nav-links">
-      <a onclick="showPage('work')" data-i18n="nav-work">Proyectos</a>
+      <a href="#work" data-i18n="nav-work">Proyectos</a>
       <a href="jaime_sevilla_portfolio.html" data-i18n="nav-portfolio">Trayectoria</a>
-      <a onclick="showPage('services')" data-i18n="nav-services">Servicios</a>
-      <a onclick="showPage('desperfecto')">El_Desperfecto</a>
-      <a onclick="showPage('hechura')" data-i18n="nav-hechura">Hechura</a>
-      <a onclick="showPage('essays')" data-i18n="nav-essays">Essays</a>
-      <a onclick="showPage('about')" data-i18n="nav-about">About</a>
-      <a onclick="showPage('contact')" data-i18n="nav-contact">Contacto</a>
+      <a href="#services" data-i18n="nav-services">Servicios</a>
+      <a href="#desperfecto">El_Desperfecto</a>
+      <a href="#hechura" data-i18n="nav-hechura">Hechura</a>
+      <a href="#essays" data-i18n="nav-essays">Essays</a>
+      <a href="#about" data-i18n="nav-about">About</a>
+      <a href="#contact" data-i18n="nav-contact">Contacto</a>
     </div>
   </div>
 </header>
@@ -705,7 +708,7 @@
     ════════════════════════════════════════════════════════ -->
     <div class="work-grid" id="work-grid">
 
-      <div class="work-item" data-cat="paisajismo">
+      <a class="work-item" data-cat="paisajismo" href="#work/paisajismo-cueva">
         <div class="work-img">
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
@@ -714,9 +717,9 @@
           <div class="work-title">Paisajismo de la CUEVA</div>
           <div class="work-type" data-i18n="wt-land-ext">Paisajismo · Exterior</div>
         </div>
-      </div>
+      </a>
 
-      <div class="work-item" data-cat="arquitectura">
+      <a class="work-item" data-cat="arquitectura" href="#work/cueva">
         <div class="work-img">
           <img src="imagenes/proyectos/Cueva/381FA292-7D17-4D0D-8929-B974A1D88305.JPG" alt="CUEVA">
         </div>
@@ -725,9 +728,9 @@
           <div class="work-title">CUEVA</div>
           <div class="work-type" data-i18n="wt-arch-remo">Arquitectura · Remodelación</div>
         </div>
-      </div>
+      </a>
 
-      <div class="work-item" data-cat="hechura">
+      <a class="work-item" data-cat="hechura" href="#work/mesa-uda01">
         <div class="work-img">
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
@@ -736,9 +739,9 @@
           <div class="work-title">Mesa de trabajo UD_A 01</div>
           <div class="work-type" data-i18n="wt-hech-mueble">Hechura · Mueble</div>
         </div>
-      </div>
+      </a>
 
-      <div class="work-item" data-cat="arquitectura">
+      <a class="work-item" data-cat="arquitectura" href="#work/palapa-los-planes">
         <div class="work-img">
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
@@ -747,9 +750,9 @@
           <div class="work-title">Palapa Los Planes</div>
           <div class="work-type" data-i18n="wt-arch-hospitality">Arquitectura · Hospitalidad</div>
         </div>
-      </div>
+      </a>
 
-      <div class="work-item" data-cat="interiores">
+      <a class="work-item" data-cat="interiores" href="#work/residencia-el-sargento">
         <div class="work-img">
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
@@ -758,9 +761,9 @@
           <div class="work-title">Residencia El Sargento</div>
           <div class="work-type" data-i18n="wt-int-housing">Interiores · Vivienda</div>
         </div>
-      </div>
+      </a>
 
-      <div class="work-item" data-cat="hechura">
+      <a class="work-item" data-cat="hechura" href="#work/banco-modular">
         <div class="work-img">
           <span class="work-img-label">→ Reemplaza con imagen</span>
         </div>
@@ -769,7 +772,7 @@
           <div class="work-title">Banco / estante modular</div>
           <div class="work-type" data-i18n="wt-hech-sistema">Hechura · Sistema</div>
         </div>
-      </div>
+      </a>
 
       <!-- EDITAR: Copia y pega uno de los bloques de arriba para agregar más proyectos -->
 
@@ -977,37 +980,37 @@
   </div>
   <div class="section" style="padding-top: 2rem">
 
-    <a class="essay-row" onclick="showPage('manifesto')" style="cursor:pointer;">
+    <a class="essay-row" href="#manifesto">
       <span class="essay-date">2025</span>
       <span class="essay-title" data-i18n="manif-essay-title" style="color: var(--ink); font-weight: 700;">Un desperfecto atelier Manifiesto</span>
       <span class="essay-tag" data-i18n="manif-essay-tag">Manifiesto</span>
     </a>
 
-    <a class="essay-row" href="#">
+    <a class="essay-row" href="#essays/imperfeccion">
       <span class="essay-date">2025</span>
       <span class="essay-title" data-i18n="essay-1">La imperfección como método</span>
       <span class="essay-tag" data-i18n="etag-1">Praxis</span>
     </a>
 
-    <a class="essay-row" href="#">
+    <a class="essay-row" href="#essays/desierto">
       <span class="essay-date">2025</span>
       <span class="essay-title" data-i18n="essay-2">Construir en el desierto: materialidad y clima</span>
       <span class="essay-tag" data-i18n="etag-2">Paisaje</span>
     </a>
 
-    <a class="essay-row" href="#">
+    <a class="essay-row" href="#essays/artesano">
       <span class="essay-date">2024</span>
       <span class="essay-title" data-i18n="essay-3">El artesano y el arquitecto — una colaboración necesaria</span>
       <span class="essay-tag" data-i18n="etag-3">Oficio</span>
     </a>
 
-    <a class="essay-row" href="#">
+    <a class="essay-row" href="#essays/hospitalidad">
       <span class="essay-date">2024</span>
       <span class="essay-title" data-i18n="essay-4">Hospitalidad y escala humana en Baja California</span>
       <span class="essay-tag" data-i18n="etag-4">Territorio</span>
     </a>
 
-    <a class="essay-row" href="#">
+    <a class="essay-row" href="#essays/design-build">
       <span class="essay-date">2024</span>
       <span class="essay-title" data-i18n="essay-5">Design-build: cuando diseñar y construir son lo mismo</span>
       <span class="essay-tag" data-i18n="etag-5">Proceso</span>
@@ -1047,8 +1050,43 @@
 
     </div>
     <div style="padding-top: 3rem; border-top: 0.5px solid var(--line); margin-top: 1rem;">
-      <a onclick="showPage('essays')" class="back-link" data-i18n="back-essays">← Essays</a>
+      <a href="#essays" class="back-link" data-i18n="back-essays">← Essays</a>
     </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: ESSAY INDIVIDUAL
+════════════════════════════════════════════════════════════════ -->
+<div id="page-essay-detail" class="page">
+  <div class="hero" style="padding-bottom: 2rem">
+    <p class="hero-tag" id="ed-tag"></p>
+    <h1 class="hero-title" style="font-size: clamp(22px, 3.5vw, 42px)" id="ed-title"></h1>
+    <div class="hero-rule"></div>
+    <p style="font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:0.08em" id="ed-date"></p>
+  </div>
+  <div class="section" id="ed-body" style="font-size:15px;line-height:1.9;max-width:680px"></div>
+  <div class="section" style="padding-top:2rem;padding-bottom:2rem">
+    <a href="#essays" class="back-link">← Essays</a>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PÁGINA: PROYECTO INDIVIDUAL
+════════════════════════════════════════════════════════════════ -->
+<div id="page-project-detail" class="page">
+  <div class="hero" style="padding-bottom: 2rem">
+    <p class="hero-tag" id="pd-type"></p>
+    <h1 class="hero-title" style="font-size: clamp(22px, 3.5vw, 42px)" id="pd-title"></h1>
+    <div class="hero-rule"></div>
+    <p style="font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:0.08em" id="pd-year"></p>
+  </div>
+  <div class="section" style="padding-top:1rem" id="pd-images"></div>
+  <div class="section" id="pd-desc" style="font-size:14px;line-height:1.85;max-width:680px;color:var(--muted)"></div>
+  <div class="section" style="padding-top:2rem;padding-bottom:2rem">
+    <a href="#work" class="back-link">← Proyectos</a>
   </div>
 </div>
 
@@ -1363,14 +1401,141 @@
     });
   }
 
-  /* ── NAVEGACIÓN ────────────────────────────────────────────── */
-  function showPage(name) {
+  /* ── DATOS: ESSAYS ─────────────────────────────────────────── */
+  const ESSAYS = {
+    'imperfeccion': {
+      date: '2025',
+      tag:   { es: 'Praxis',    en: 'Praxis' },
+      title: { es: 'La imperfección como método', en: 'Imperfection as method' },
+      body:  { es: '', en: '' }
+    },
+    'desierto': {
+      date: '2025',
+      tag:   { es: 'Paisaje',   en: 'Landscape' },
+      title: { es: 'Construir en el desierto: materialidad y clima', en: 'Building in the desert: materiality and climate' },
+      body:  { es: '', en: '' }
+    },
+    'artesano': {
+      date: '2024',
+      tag:   { es: 'Oficio',    en: 'Craft' },
+      title: { es: 'El artesano y el arquitecto — una colaboración necesaria', en: 'The craftsman and the architect — a necessary collaboration' },
+      body:  { es: '', en: '' }
+    },
+    'hospitalidad': {
+      date: '2024',
+      tag:   { es: 'Territorio', en: 'Territory' },
+      title: { es: 'Hospitalidad y escala humana en Baja California', en: 'Hospitality and human scale in Baja California' },
+      body:  { es: '', en: '' }
+    },
+    'design-build': {
+      date: '2024',
+      tag:   { es: 'Proceso',   en: 'Process' },
+      title: { es: 'Design-build: cuando diseñar y construir son lo mismo', en: 'Design-build: when designing and building are the same' },
+      body:  { es: '', en: '' }
+    }
+  };
+
+  /* ── DATOS: PROYECTOS ───────────────────────────────────────── */
+  const PROJECTS = {
+    'paisajismo-cueva': {
+      year: '2024',
+      type:   { es: 'Paisajismo · Exterior',       en: 'Landscaping · Exterior' },
+      title:  'Paisajismo de la CUEVA',
+      images: [],
+      body:   { es: '', en: '' }
+    },
+    'cueva': {
+      year: '2025',
+      type:   { es: 'Arquitectura · Remodelación', en: 'Architecture · Renovation' },
+      title:  'CUEVA',
+      images: ['imagenes/proyectos/Cueva/381FA292-7D17-4D0D-8929-B974A1D88305.JPG'],
+      body:   { es: '', en: '' }
+    },
+    'mesa-uda01': {
+      year: '2023',
+      type:   { es: 'Hechura · Mueble',            en: 'Hechura · Furniture' },
+      title:  'Mesa de trabajo UD_A 01',
+      images: [],
+      body:   { es: '', en: '' }
+    },
+    'palapa-los-planes': {
+      year: '2023',
+      type:   { es: 'Arquitectura · Hospitalidad',  en: 'Architecture · Hospitality' },
+      title:  'Palapa Los Planes',
+      images: [],
+      body:   { es: '', en: '' }
+    },
+    'residencia-el-sargento': {
+      year: '2023',
+      type:   { es: 'Interiores · Vivienda',        en: 'Interiors · Housing' },
+      title:  'Residencia El Sargento',
+      images: [],
+      body:   { es: '', en: '' }
+    },
+    'banco-modular': {
+      year: '2022',
+      type:   { es: 'Hechura · Sistema',            en: 'Hechura · System' },
+      title:  'Banco / estante modular',
+      images: [],
+      body:   { es: '', en: '' }
+    }
+  };
+
+  /* ── ROUTING ────────────────────────────────────────────────── */
+  const TOP_PAGES = new Set(['work','portfolio','services','desperfecto','hechura','essays','manifesto','about','contact']);
+
+  function navigate(hash) {
+    const path = (hash || '').replace(/^#\/?/, '');
+    const [page, sub] = path.split('/');
+
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + name).classList.add('active');
-    window.scrollTo(0, 0);
-    /* Cierra el menú móvil si está abierto */
     document.querySelector('.nav-bar').classList.remove('open');
+    window.scrollTo(0, 0);
+
+    if (page === 'essays' && sub && ESSAYS[sub]) {
+      renderEssay(sub);
+    } else if (page === 'work' && sub && PROJECTS[sub]) {
+      renderProject(sub);
+    } else if (TOP_PAGES.has(page)) {
+      document.getElementById('page-' + page).classList.add('active');
+    } else {
+      document.getElementById('page-work').classList.add('active');
+    }
   }
+
+  function renderEssay(slug) {
+    const e = ESSAYS[slug];
+    document.getElementById('ed-tag').textContent   = e.tag[lang];
+    document.getElementById('ed-date').textContent  = e.date;
+    document.getElementById('ed-title').textContent = e.title[lang];
+    document.getElementById('ed-body').innerHTML    = e.body[lang] ||
+      `<p style="font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:0.06em">${lang === 'en' ? 'Coming soon.' : 'Próximamente.'}</p>`;
+    document.getElementById('page-essay-detail').classList.add('active');
+  }
+
+  function renderProject(slug) {
+    const p = PROJECTS[slug];
+    document.getElementById('pd-type').textContent  = p.type[lang];
+    document.getElementById('pd-title').textContent = p.title;
+    document.getElementById('pd-year').textContent  = p.year;
+    document.getElementById('pd-desc').innerHTML    = p.body[lang] ||
+      `<p style="font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:0.06em">${lang === 'en' ? 'Coming soon.' : 'Próximamente.'}</p>`;
+    const imgsDiv = document.getElementById('pd-images');
+    if (p.images.length) {
+      imgsDiv.innerHTML = p.images.map(src =>
+        `<img src="${src}" style="width:100%;max-width:100%;display:block;margin-bottom:1px;cursor:zoom-in" alt="${p.title}">`
+      ).join('');
+      imgsDiv.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', () => openLightbox(img.src, img.alt));
+      });
+    } else {
+      imgsDiv.innerHTML = `<div style="background:var(--bg2);aspect-ratio:4/3;width:100%;display:flex;align-items:center;justify-content:center"><span style="font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:0.08em">${lang === 'en' ? 'Images coming soon' : 'Imágenes próximamente'}</span></div>`;
+    }
+    document.getElementById('page-project-detail').classList.add('active');
+  }
+
+  window.addEventListener('hashchange', () => navigate(location.hash));
+  window.addEventListener('DOMContentLoaded', () => navigate(location.hash));
 
   /* ── MENÚ MÓVIL ────────────────────────────────────────────── */
   function toggleMenu() {
@@ -1393,6 +1558,10 @@
     lang = lang === 'es' ? 'en' : 'es';
     document.getElementById('lang-btn').textContent = lang === 'es' ? 'ES / EN' : 'EN / ES';
     applyLang(lang);
+    const path = location.hash.replace(/^#\/?/, '');
+    const [page, sub] = path.split('/');
+    if (page === 'essays' && sub && ESSAYS[sub])   renderEssay(sub);
+    if (page === 'work'   && sub && PROJECTS[sub]) renderProject(sub);
   }
 
   /* ── LIGHTBOX ──────────────────────────────────────────────── */
@@ -1409,7 +1578,7 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   document.querySelectorAll('.work-img').forEach(div => {
     const img = div.querySelector('img');
-    if (img) div.addEventListener('click', () => openLightbox(img.src, img.alt));
+    if (img) div.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); openLightbox(img.src, img.alt); });
   });
 
   /* Inicializa el grid mostrando todos los proyectos al cargar */
